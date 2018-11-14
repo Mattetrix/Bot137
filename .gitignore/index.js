@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const prefix = ("?");
 
 
-const ban = require('./kick et ban/ban');
+const ban = require('./ban');
 
 
 

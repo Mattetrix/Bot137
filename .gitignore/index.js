@@ -3,7 +3,15 @@ const bot = new Discord.Client();
 const prefix = ("?");
 
 
-    
+const ban = require('./kick et ban/ban');
+
+
+
+bot.on('message', function (message){
+    if (ban.match(message)){
+        return ban.action(message)
+    }
+});    
 
 bot.on('ready', function () {
     console.log("Je suis prêt à être utilisé.")

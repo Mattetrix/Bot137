@@ -17,13 +17,40 @@ bot.on('message', message => {
   })
 
 bot.on('guildMemberAdd', member => {
-    member.createDM().then(channel => {
-        return channel.send('Bienvenue sur le serveur de Alexpgm' + member.displayName)
-        console.log(`${member.displayName} à rejoint le serveur.`)
-    }).catch(console.error)
-});
+  member.createDM().then(channel => {
+    return channel.send('Bienvenue sur le serveur Albert de Mun' + member.displayName)
+  }).catch(console.error)
+    
+})
 
+bot.on('message', message => {
 
+  if (message.content.startsWith('!play')) {
+    // On récupère le premier channel audio du serveur
+    let voiceChannel = message.guild.channels
+      .filter(function (channel) { return channel.type === 'voice' })
+      .first()
+    let args = message.content.split(' ')
+    // On rejoint le channel audio
+    voiceChannel
+      .join()
+      .then(function (connection) {
+        // On démarre un stream à partir de la vidéo youtube
+        let stream = YoutubeStream(args[1])
+        stream.on('error', function () {
+          message.reply("Je n'ai pas réussi à lire cette vidéo :(")
+          connection.disconnect()
+        })
+        
+        connection
+          .playStream(stream)
+          .on('end', function () {
+            connection.disconnect()
+          })
+      })
+  }
+
+})
 
 bot.on('message', msg => {
     if (msg.content === "bonjour"){

@@ -10,8 +10,9 @@ bot.on('ready', function () {
 });
 
 bot.on('message', message => {
-    if (message.content === 'ping') {
-      message.reply('pong !')
+    if (message.content === 'rebootexec') {
+      message.reply('Reboot exécuté ! Le bot va redemarrer !')
+       message.reply('Le BOT à redémarré !')
     }
   })
 

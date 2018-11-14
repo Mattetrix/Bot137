@@ -38,4 +38,4 @@ bot.on('message', msg => {
 
 });
 
-bot.login(codetest);
+bot.login(process.env.TOKEN);

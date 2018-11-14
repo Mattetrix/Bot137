@@ -3,9 +3,7 @@ const bot = new Discord.Client();
 const prefix = ("?");
 
 
-    //-----------------------------------------------------------------------------------------------------------------
 
-//kick
 if(command === "kick") {
     
     if(!message.member.roles.some(r=>["Admin", "Modo"].includes(r.name)) )
@@ -24,36 +22,31 @@ if(command === "kick") {
       .catch(error => message.reply(`Désolé ${message.author} je ne peux pas expulser la personne car : ${error}`));
     message.reply(`${member.user.tag} a été expulsé par ${message.author.tag} car : ${reason}`);
 
-    //-----------------------------------------------------------------------------------------------------------------
     
-//ReadyPreset
+    
+
 bot.on('ready', function () {
     console.log("Je suis prêt à être utilisé.")
     bot.user.setActivity('En développement').catch(console.error)
 });
     
-   
-    //-----------------------------------------------------------------------------------------------------------------
 
-//Reboot
 bot.on('message', message => {
     if (message.content === 'rebootexec') {
       message.reply('Reboot exécuté ! Le bot va redemarrer !')
        message.reply('Le BOT à redémarré !')
     }
   })
-    
-    //-----------------------------------------------------------------------------------------------------------------
 
-//Message de bienvenue
+
 bot.on('guildMemberAdd', member => {
   member.createDM().then(channel => {
     return channel.send('Bienvenue sur le serveur Albert de Mun' + member.displayName)
   }).catch(console.error)
     
-    //-----------------------------------------------------------------------------------------------------------------
+    
 
-//Musique    
+   
 })
 
 bot.on('message', message => {
@@ -85,9 +78,8 @@ bot.on('message', message => {
 
 })
     
-    //-----------------------------------------------------------------------------------------------------------------
 
-//Bonjour et site
+
 bot.on('message', msg => {
     if (msg.content === "bonjour"){
         msg.reply("Heureux de te revoir parmis nous.")

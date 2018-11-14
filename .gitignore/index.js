@@ -3,26 +3,6 @@ const bot = new Discord.Client();
 const prefix = ("?");
 
 
-
-if(command === "kick") {
-    
-    if(!message.member.roles.some(r=>["Admin", "Modo"].includes(r.name)) )
-      return message.reply("Tu n'as pas la permission de faire ceci!");
-    
-    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-    if(!member)
-      return message.reply("Merci de spécifier un nom d'utilisateur valide");
-    if(!member.kickable) 
-      return message.reply("Vous ne pouvez pas expulsez cet utilisateur ! As-t-il un rôle supérieur ? Ai-je les permissions d'expulser un membre?");
-    
-    let reason = args.slice(1).join(' ');
-    if(!reason) reason = "Aucune raison spécifiée";
-    
-    await member.kick(reason)
-      .catch(error => message.reply(`Désolé ${message.author} je ne peux pas expulser la personne car : ${error}`));
-    message.reply(`${member.user.tag} a été expulsé par ${message.author.tag} car : ${reason}`);
-
-    
     
 
 bot.on('ready', function () {
